@@ -1,1 +1,3 @@
-# chatgpt-gift-advice
+# open-ai gift advice generator
+
+WIP
