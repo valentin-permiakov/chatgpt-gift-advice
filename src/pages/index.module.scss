@@ -1,0 +1,40 @@
+@use "@/styles/variables" as vars;
+
+@font-face {
+  font-family: "ColfaxAI";
+  src: url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff2)
+      format("woff2"),
+    url(https://cdn.openai.com/API/fonts/ColfaxAIRegular.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ColfaxAI";
+  src: url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff2) format("woff2"),
+    url(https://cdn.openai.com/API/fonts/ColfaxAIBold.woff) format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .icon {
+    width: 34px;
+  }
+
+  .header {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  .result {
+    font-weight: bold;
+    margin-top: 40px;
+  }
+}

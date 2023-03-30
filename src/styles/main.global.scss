@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding: 0;
+  padding-top: 30px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 16px;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+  overflow-x: hidden;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input {
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+}

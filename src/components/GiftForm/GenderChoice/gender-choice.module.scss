@@ -1,0 +1,51 @@
+@use "@/styles/mixins";
+@use "@/styles/variables" as vars;
+
+.choiceBox {
+  display: flex;
+  justify-self: flex-end;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .choiceName {
+    align-self: flex-start;
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+}
+
+.choiceBtn {
+  @include mixins.btnReset;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 284px;
+  padding: 19px 15px;
+  background: vars.$mainColor;
+  color: white;
+  font-size: 20px;
+  line-height: 17px;
+  text-transform: uppercase;
+
+  .iconSpan {
+    position: absolute;
+    right: 10px;
+    top: 18px;
+  }
+
+  svg {
+    stroke: white;
+  }
+
+  &:hover {
+    background-color: vars.$mainColorActive;
+  }
+}
+
+.reversed {
+  span {
+    transform: rotate(180deg) translateY(-2px);
+  }
+}

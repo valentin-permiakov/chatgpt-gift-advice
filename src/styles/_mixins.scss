@@ -1,0 +1,26 @@
+@use "./variables" as vars;
+
+@mixin listReset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin btnReset {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+@mixin btnStyle {
+  @include btnReset();
+  padding: 19px 50px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17px;
+  transition: background-color 0.2s ease-in;
+  &:hover {
+    transition: background-color 0.2s ease-in;
+  }
+}

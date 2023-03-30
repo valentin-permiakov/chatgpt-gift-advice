@@ -1,0 +1,7 @@
+@use "@/styles/variables" as vars;
+
+.formField {
+  padding-top: 10px;
+  border: 1px solid vars.$mainColor;
+  margin-bottom: 20px;
+}

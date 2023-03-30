@@ -1,6 +1,7 @@
 import React from "react";
+import styles from "./input.module.scss";
 
-type InputProps = {
+export type InputProps = {
   type: React.HTMLInputTypeAttribute;
   labelText: string;
   name: string;
@@ -18,7 +19,7 @@ const Input: React.FC<InputProps> = ({
   labelText,
 }) => {
   return (
-    <label>
+    <label className={styles.label}>
       {labelText}
       <input
         type={type}
@@ -26,6 +27,7 @@ const Input: React.FC<InputProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className={styles.input}
       />
     </label>
   );

@@ -1,3 +1,4 @@
+import generatePrompt from "@/utils/generatePrompt";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Configuration, OpenAIApi } from "openai";
 
@@ -12,15 +13,13 @@ interface GiftRequest extends NextApiRequest {
     priceMin: number;
     priceMax: number;
     gender: string;
+    relation: string;
     age: number;
     hobbies: string;
   };
 }
 
-export default async function generateGifts(
-  req: GiftRequest,
-  res: NextApiResponse
-) {
+const generateGifts = async (req: GiftRequest, res: NextApiResponse) => {
   if (!configuration.apiKey) {
     res.status(500).json({
       error: {
@@ -31,25 +30,26 @@ export default async function generateGifts(
     return;
   }
 
-  const { holiday, priceMin, priceMax, gender, age, hobbies } = req.body;
+  const { holiday, priceMin, priceMax, gender, relation, age, hobbies } =
+    req.body;
   const prompt = generatePrompt(
     priceMin,
     priceMax,
     gender,
     age,
+    relation,
     holiday,
     hobbies
   );
-
-  console.log(prompt);
 
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
       prompt: prompt,
-      temperature: 0.5,
-      max_tokens: 2048,
+      temperature: 0.7,
+      max_tokens: 1000,
     });
+    console.log("prompt:", prompt, "response:", completion.data.choices);
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error: any) {
     if (error.response) {
@@ -64,17 +64,6 @@ export default async function generateGifts(
       });
     }
   }
-}
+};
 
-function generatePrompt(
-  priceMin: number,
-  priceMax: number,
-  gender: string = "person",
-  age: number,
-  holiday?: string,
-  hobbies?: string
-) {
-  return `Suggest 3 ${holiday} gift ideas between ${priceMin} dollars and ${priceMax} dollars for a ${age} years old ${gender} ${
-    hobbies ? `who is into ${hobbies}` : ""
-  } `;
-}
+export default generateGifts;

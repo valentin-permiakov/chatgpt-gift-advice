@@ -1,0 +1,25 @@
+@use "@/styles/mixins";
+@use "@/styles/variables" as vars;
+
+.genderList {
+  @include mixins.listReset;
+  background-color: vars.$mainColor;
+  color: white;
+  width: 284px;
+
+  .genderChoice {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 15px;
+    border-top: 1px solid white;
+    font-size: 20px;
+    line-height: 17px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &:hover {
+      background-color: vars.$mainColorActive;
+    }
+  }
+}
