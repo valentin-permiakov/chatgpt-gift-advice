@@ -6,11 +6,24 @@ const generatePrompt = (
   relation?: string,
   holiday?: string,
   hobbies?: string
-) => {
-  return `Suggest 3 ${holiday} gift ideas between ${priceMin} dollars and ${priceMax} dollars for a ${age} years old ${gender}${
-    relation ? ` who is my ${relation}` : ""
-  }${hobbies ? ` and is into ${hobbies}` : ""}. Answer in the following format:
-  1. Price: [price], [name]: [description] `;
+): string => {
+  let prompt = `Can you suggest three gift ideas for a ${age}-year-old ${gender} with a budget of $${priceMin}-${priceMax}`;
+
+  if (relation) {
+    prompt += ` who is your ${relation}`;
+  }
+
+  if (holiday) {
+    prompt += ` for ${holiday}`;
+  }
+
+  if (hobbies) {
+    prompt += ` and is interested in ${hobbies}`;
+  }
+
+  prompt += `? Please provide three gift ideas, each starting with the price, then the name, and finally a once sentense description. Separate gift number, price and name with a dot.`;
+
+  return prompt;
 };
 
 export default generatePrompt;

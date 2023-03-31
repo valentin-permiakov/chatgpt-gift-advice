@@ -3,6 +3,7 @@ import Input, { InputProps } from "../Input/Input";
 import FieldForm from "./FieldForm/FieldForm";
 import GenderChoice from "./GenderChoice/GenderChoice";
 import styles from "./gift-form.module.scss";
+import parseResponse from "../../utils/parseResponse";
 
 type GiftFormProps = {
   setResult: React.Dispatch<React.SetStateAction<string>>;
@@ -90,11 +91,9 @@ const GiftForm: React.FC<GiftFormProps> = ({ setResult }) => {
       }
 
       const result: string = data.result;
-      const newArr = result
-        .split("\n")
-        .filter((item) => item.trim())
-        .map((item) => item.trim());
-      console.log(newArr);
+
+      const parsed = parseResponse(result);
+      console.log(parsed);
 
       setResult(data.result);
       setHoliday("");
