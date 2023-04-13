@@ -7,14 +7,16 @@ const generatePrompt = (
   holiday?: string,
   hobbies?: string
 ): string => {
-  let prompt = `Can you suggest three gift ideas for a ${age}-year-old ${gender} with a budget of $${priceMin}-${priceMax}`;
+  let prompt = `Can you suggest three`;
+
+  if (holiday) {
+    prompt += ` ${holiday}`;
+  }
+
+  prompt += ` gift ideas for a ${age}-year-old ${gender} with a budget of $${priceMin}-${priceMax}`;
 
   if (relation) {
     prompt += ` who is your ${relation}`;
-  }
-
-  if (holiday) {
-    prompt += ` for ${holiday}`;
   }
 
   if (hobbies) {

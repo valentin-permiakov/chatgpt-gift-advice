@@ -2,13 +2,14 @@ import Input, { InputProps } from "@/components/Input/Input";
 import React from "react";
 import GenderChoice from "../GenderChoice/GenderChoice";
 import styles from "./field-form.module.scss";
+import { IGiftFormState } from "../GiftForm";
 
 type FieldFormProps = {
   legendText: string;
   inputData: InputProps[];
   isAboutPerson?: boolean;
   gender?: string;
-  setGender?: React.Dispatch<React.SetStateAction<string>>;
+  setGender?: React.Dispatch<React.SetStateAction<IGiftFormState>>;
 };
 
 const FieldForm: React.FC<FieldFormProps> = ({

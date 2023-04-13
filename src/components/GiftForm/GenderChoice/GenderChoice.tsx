@@ -4,10 +4,11 @@ import { Icon, EIcons } from "@/icons/Icon";
 import React, { useState } from "react";
 import styles from "./gender-choice.module.scss";
 import GenderList from "./GenderList/GenderList";
+import { IGiftFormState } from "../GiftForm";
 
 type GenderChoiceProps = {
   gender: string;
-  setGender: React.Dispatch<React.SetStateAction<string>>;
+  setGender: React.Dispatch<React.SetStateAction<IGiftFormState>>;
 };
 
 const GenderChoice: React.FC<GenderChoiceProps> = ({ gender, setGender }) => {
@@ -16,7 +17,7 @@ const GenderChoice: React.FC<GenderChoiceProps> = ({ gender, setGender }) => {
 
   const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
     if (e.currentTarget.dataset.type) {
-      setGender(e.currentTarget.dataset.type);
+      setGender((prev) => ({ ...prev, gender: e.currentTarget.dataset.type! }));
     }
     setIsOpened(false);
   };

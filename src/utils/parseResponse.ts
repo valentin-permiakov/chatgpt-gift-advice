@@ -14,13 +14,13 @@ const parseResponse = (
 
   for (let i = 0; i < responseArr.length; i++) {
     const line = responseArr[i].trim();
-    const match = line.match(/^(\d+)\.\s+(\S+)\s+(.*)\.\s+(.*)$/);
+    const match = line.split(".");
 
     if (match) {
-      const index = parseInt(match[1]);
-      const price = match[2];
-      const name = match[3];
-      const description = match[4];
+      const index = parseInt(match[0]);
+      const price = match[1];
+      const name = match[2];
+      const description = match[3];
 
       giftIdeas.push({
         index,
